@@ -7,40 +7,59 @@
 <!-- Load Pako for Zlib compression -->
 <script src="cdn.jsdelivr.net"></script>
 
-<script type="module">
-  async function renderDiagrams() {
-    // Select both structurizr and plantuml blocks
-    const selectors = 'code.language-structurizr, code.language-plantuml';
-    const codeBlocks = document.querySelectorAll(selectors);
+<script>
+(function() {
+  // Helper: Converts a Uint8Array to a URL-safe Base64 string safely
+  function uint8ArrayToBase64(uint8Array) {
+    let binary = '';
+    const len = uint8Array.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(uint8Array[i]);
+    }
+    return window.btoa(binary)
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/, ''); // Remove padding for cleaner URLs
+  }
+
+  async function renderKroki() {
+    const codeBlocks = document.querySelectorAll('code.language-structurizr, code.language-plantuml');
 
     for (const block of codeBlocks) {
       try {
         const dsl = block.textContent.trim();
-        
-        // Identify the diagram type (structurizr or plantuml)
         const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
-        
-        // 1. Encode to UTF-8
-        const data = new TextEncoder().encode(dsl);
-        // 2. Compress using Zlib (Deflate)
-        const compressed = pako.deflate(data, { level: 9 });
-        // 3. Convert to URL-safe Base64
-        const base64 = btoa(String.fromCharCode(...compressed))
-          .replace(/\+/g, '-')
-          .replace(/\//g, '_');
 
-        const img = document.createElement('img');
-        img.src = `kroki.io/${type}/svg/${base64}`;
-        img.style.maxWidth = "100%";
+        // 1. Encode text to UTF-8 bytes
+        const data = new TextEncoder().encode(dsl);
         
+        // 2. Compress using pako (Deflate level 9)
+        const compressed = pako.deflate(data, { level: 9 });
+        
+        // 3. Convert to URL-safe Base64
+        const base64 = uint8ArrayToBase64(compressed);
+
+        // 4. Create and replace with <img>
+        const img = document.createElement('img');
+        img.src = `https://kroki.io/${type}/svg/${base64}`;
+        img.style.maxWidth = "100%";
+        img.className = "kroki-diagram";
+
         const container = block.parentElement.tagName === 'PRE' ? block.parentElement : block;
         container.parentNode.replaceChild(img, container);
       } catch (err) {
-        console.error(`Failed to render ${type} diagram:`, err);
+        console.error(`Kroki render error [${type}]:`, err);
       }
     }
   }
 
-  window.addEventListener('DOMContentLoaded', renderDiagrams);
+  // Ensure execution after page load
+  if (document.readyState === 'complete') {
+    renderKroki();
+  } else {
+    window.addEventListener('load', renderKroki);
+  }
+})();
 </script>
+
 
