@@ -1,13 +1,13 @@
-<!-- <script type="module">
+<script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     mermaid.initialize({startOnLoad:true,theme:'neutral'})
     await mermaid.run({querySelector:'code.language-mermaid'})   
-</script> -->
+</script>
 
 <!-- Load Pako for Zlib compression -->
 <script src="cdn.jsdelivr.net"></script>
 
-<!-- <script>
+<script>
 (function() {
   // Helper: Converts a Uint8Array to a URL-safe Base64 string safely
   function uint8ArrayToBase64(uint8Array) {
@@ -23,7 +23,7 @@
   }
 
   async function renderKroki() {
-    const codeBlocks = document.querySelectorAll('code.language-structurizr, code.language-plantuml, code.language-mermaid');
+    const codeBlocks = document.querySelectorAll('code.language-structurizr, code.language-plantuml');
 
     for (const block of codeBlocks) {
       try {
@@ -31,9 +31,7 @@
         const type = "";
         if(block.classList.contains('language-structurizr')){
           type = 'structurizr';
-        } else if(block.classList.contains('language-plantuml')){
-          type = 'plantuml';
-        } else if(block.classList.contains('language-mermaid')){
+        } else{
           type = 'plantuml';
         }
 
@@ -69,61 +67,5 @@
     window.addEventListener('load', renderKroki);
   }
 })();
-</script> -->
-
-<!-- 1. Load Pako -->
-<script src="cdnjs.cloudflare.com"></script>
-
-<script>
-(function() {
-  console.log("Kroki Loader: Script initialized.");
-
-  function processDiagram(block) {
-    if (block.dataset.krokiProcessed) return; // Prevent double-processing
-    block.dataset.krokiProcessed = "true";
-
-    try {
-      const dsl = block.textContent.trim();
-      const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
-      console.log(`Kroki Loader: Found ${type} block. Encoding...`);
-
-      // Encoding logic
-      const data = new TextEncoder().encode(dsl);
-      const compressed = pako.deflate(data, { level: 9 });
-      let binary = '';
-      const bytes = new Uint8Array(compressed);
-      for (let i = 0; i < bytes.byteLength; i++) { binary += String.fromCharCode(bytes[i]); }
-      const base64 = btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
-      // Create Image
-      const img = document.createElement('img');
-      img.src = `https://kroki.io/${type}/svg/${base64}`;
-      img.style.maxWidth = "100%";
-      
-      // Replace container
-      const container = block.closest('pre') || block;
-      container.parentNode.replaceChild(img, container);
-      console.log(`Kroki Loader: Successfully replaced ${type} block with image.`);
-    } catch (e) {
-      console.error("Kroki Loader Error:", e);
-    }
-  }
-
-  // 2. The MutationObserver watches for new elements (useful for dynamic themes)
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeType === 1) {
-          const blocks = node.querySelectorAll('code.language-structurizr, code.language-plantuml');
-          blocks.forEach(processDiagram);
-          if (node.matches('code.language-structurizr, code.language-plantuml')) processDiagram(node);
-        }
-      });
-    });
-  });
-
-  // Start observing and run once for existing content
-  observer.observe(document.body, { childList: true, subtree: true });
-  document.querySelectorAll('code.language-structurizr, code.language-plantuml').forEach(processDiagram);
-})();
 </script>
+
