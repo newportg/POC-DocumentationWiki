@@ -4,29 +4,43 @@
     await mermaid.run({querySelector:'code.language-mermaid'})   
 </script>
 
+<!-- Load Pako for Zlib compression -->
+<script src="cdn.jsdelivr.net"></script>
+
 <script type="module">
-  import pako from 'cdn.jsdelivr.net';
+  async function renderDiagrams() {
+    // Select both structurizr and plantuml blocks
+    const selectors = 'code.language-structurizr, code.language-plantuml';
+    const codeBlocks = document.querySelectorAll(selectors);
 
-  async function renderStructurizr() {
-    const codeBlocks = document.querySelectorAll('code.language-structurizr');
-    
     for (const block of codeBlocks) {
-      const dsl = block.textContent.trim();
-      
-      // Kroki expects: Base64(Zlib.Compress(Text))
-      const data = new TextEncoder().encode(dsl);
-      const compressed = pako.deflate(data, { level: 9 });
-      const base64 = btoa(String.fromCharCode(...compressed))
-        .replace(/\+/g, '-').replace(/\//g, '_'); // URL-safe base64
+      try {
+        const dsl = block.textContent.trim();
+        
+        // Identify the diagram type (structurizr or plantuml)
+        const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
+        
+        // 1. Encode to UTF-8
+        const data = new TextEncoder().encode(dsl);
+        // 2. Compress using Zlib (Deflate)
+        const compressed = pako.deflate(data, { level: 9 });
+        // 3. Convert to URL-safe Base64
+        const base64 = btoa(String.fromCharCode(...compressed))
+          .replace(/\+/g, '-')
+          .replace(/\//g, '_');
 
-      const img = document.createElement('img');
-      img.src = `kroki.io/Structurizr/{base64}`;
-      img.style.maxWidth = '100%';
-      
-      // Replace the <pre><code> block with the new image
-      block.parentElement.replaceWith(img);
+        const img = document.createElement('img');
+        img.src = `kroki.io/${type}/svg/${base64}`;
+        img.style.maxWidth = "100%";
+        
+        const container = block.parentElement.tagName === 'PRE' ? block.parentElement : block;
+        container.parentNode.replaceChild(img, container);
+      } catch (err) {
+        console.error(`Failed to render ${type} diagram:`, err);
+      }
     }
   }
 
-  renderStructurizr();
+  window.addEventListener('DOMContentLoaded', renderDiagrams);
 </script>
+
