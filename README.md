@@ -162,3 +162,40 @@ GitHub Pages uses Jekyll by default, and its capabilities are dependent on the p
 ## Demo Rendered Sites
 * [GitHub Pages](https://newportg.github.io/POC-DocumentationWiki/README.html)
 * [GitBook](https://zoomalong.gitbook.io/poc-documentation/)
+
+## Genealogy of Markdown
+
+```mermaid
+graph TD
+    %% Early Influences
+    A[Plain Text Email / Usenet] --> D
+    B[Setext 1992] --> D
+    C[reStructuredText 2002] --> D
+
+    %% The Progenitor
+    D{Markdown v1.0.1 2004<br/>John Gruber & Aaron Swartz}
+
+    %% Early Branching
+    D --> E[MultiMarkdown 2005]
+    D --> F[PHP Markdown Extra]
+    
+    %% Major Modern Flavors
+    D --> G[GitHub Flavored Markdown GFM]
+    D --> H[Stack Overflow Markdown]
+    
+    %% Standardization Efforts
+    G --> I((CommonMark 2014))
+    H --> I
+    
+    %% Specialized Descendants
+    I --> J[R Markdown / Quarto]
+    I --> K[Obsidian / PKMS Flavors]
+    E --> L[Pandoc's Markdown]
+    
+    %% Modern Integrations
+    K --> M[Mermaid / Diagrams]
+    J --> N[Academic Publishing]
+
+    style D fill:#f9f,stroke:#333,stroke-width:4px
+    style I fill:#bbf,stroke:#333,stroke-width:2px
+```
