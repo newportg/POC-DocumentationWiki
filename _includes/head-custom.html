@@ -50,7 +50,7 @@
         const base64 = uint8ArrayToBase64(compressed);
 
         // 4. Create and replace with <img>
-        const img = document.createElement('img');
+        const img = document.createElement('a');
         img.src = `https://kroki.io/${type}/svg/${base64}`;
         img.style.maxWidth = "100%";
         img.className = "kroki-diagram";
