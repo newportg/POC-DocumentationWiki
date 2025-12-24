@@ -1,14 +1,13 @@
 ---
-__Advertisement :)__
-
-- __[pica](https://nodeca.github.io/pica/demo/)__ - high quality and fast image
-  resize in browser.
-- __[babelfish](https://github.com/nodeca/babelfish/)__ - developer friendly
-  i18n with plurals support and easy syntax.
-
-You will like those projects!
-
+layout: post
+title: Markdown-it sample page
+categories: [Wiki]
+author: "Gary Newport"
+date: "2025-12-24 12:00:00 +0000"
+tags: [Markdown-it, Markdown, Sample]
 ---
+# Markdown-it sample page
+
 
 # h1 Heading 8-)
 ## h2 Heading
