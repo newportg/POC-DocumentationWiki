@@ -1,5 +1,32 @@
 <script type="module">
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     mermaid.initialize({startOnLoad:true,theme:'neutral'})
-    await mermaid.run({querySelector:'code.language-mermaid'})
+    await mermaid.run({querySelector:'code.language-mermaid'})   
+</script>
+
+<script type="module">
+  import pako from 'cdn.jsdelivr.net';
+
+  async function renderStructurizr() {
+    const codeBlocks = document.querySelectorAll('code.language-structurizr');
+    
+    for (const block of codeBlocks) {
+      const dsl = block.textContent.trim();
+      
+      // Kroki expects: Base64(Zlib.Compress(Text))
+      const data = new TextEncoder().encode(dsl);
+      const compressed = pako.deflate(data, { level: 9 });
+      const base64 = btoa(String.fromCharCode(...compressed))
+        .replace(/\+/g, '-').replace(/\//g, '_'); // URL-safe base64
+
+      const img = document.createElement('img');
+      img.src = `kroki.io/Structurizr/{base64}`;
+      img.style.maxWidth = '100%';
+      
+      // Replace the <pre><code> block with the new image
+      block.parentElement.replaceWith(img);
+    }
+  }
+
+  renderStructurizr();
 </script>
