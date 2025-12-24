@@ -4,57 +4,71 @@
     await mermaid.run({querySelector:'code.language-mermaid'})   
 </script>
 
-<!-- 1. Load Pako directly - Ensure this is ABOVE the script below -->
-<script src="cdnjs.cloudflare.com"></script>
+<!-- Load Pako for Zlib compression -->
+<script src="cdn.jsdelivr.net"></script>
 
 <script>
-// Use a standard function (not an IIFE) to ensure it's easy to debug
-function runKroki() {
-    console.log("Kroki: Checking for diagrams...");
-    
-    // Target common Jekyll/Kramdown code block classes
-    const selector = 'code.language-structurizr, code.language-plantuml, .language-structurizr code, .language-plantuml code';
-    const blocks = document.querySelectorAll(selector);
-    
-    if (blocks.length === 0) {
-        console.log("Kroki: No structurizr or plantuml blocks found on this page.");
-        return;
+(function() {
+  // Helper: Converts a Uint8Array to a URL-safe Base64 string safely
+  function uint8ArrayToBase64(uint8Array) {
+    let binary = '';
+    const len = uint8Array.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(uint8Array[i]);
     }
+    return window.btoa(binary)
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=+$/, ''); // Remove padding for cleaner URLs
+  }
 
-    blocks.forEach(function(block) {
-        try {
-            const dsl = block.textContent.trim();
-            const type = block.classList.contains('language-structurizr') || 
-                         block.parentElement.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
+  async function renderKroki() {
+    console.log("Kroki: Checking for diagrams...");
+    const codeBlocks = document.querySelectorAll('code.language-structurizr, code.language-plantuml');
 
-            // Encoding: UTF8 -> Deflate -> Base64 (URL safe)
-            const data = new TextEncoder().encode(dsl);
-            const compressed = pako.deflate(data, { level: 9 });
-            let binary = '';
-            new Uint8Array(compressed).forEach(function(b) { binary += String.fromCharCode(b); });
-            const base64 = btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
-            const img = document.createElement('img');
-            img.src = "kroki.io" + type + "/svg/" + base64;
-            img.style.maxWidth = "100%";
-            img.style.display = "block";
-
-            // Find the container (usually <pre> or a <div>) and replace it
-            const container = block.closest('pre') || block;
-            container.parentNode.replaceChild(img, container);
-            console.log("Kroki: Rendered a " + type + " diagram.");
-        } catch (e) {
-            console.error("Kroki Error:", e);
+    for (const block of codeBlocks) {
+      try {
+        const dsl = block.textContent.trim();
+        const type = "";
+        if(block.classList.contains('language-structurizr')){
+          type = 'structurizr';
+          console.log("renderKroki: structurizr");
+        } else{
+          type = 'plantuml';
+          console.log("renderKroki: plantuml");
         }
-    });
-}
 
-// Ensure execution even if script is in <head>
-if (document.readyState === 'loading') {
-    window.addEventListener('DOMContentLoaded', runKroki);
-} else {
-    runKroki();
-}
+        //const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
+
+        // 1. Encode text to UTF-8 bytes
+        const data = new TextEncoder().encode(dsl);
+        
+        // 2. Compress using pako (Deflate level 9)
+        const compressed = pako.deflate(data, { level: 9 });
+        
+        // 3. Convert to URL-safe Base64
+        const base64 = uint8ArrayToBase64(compressed);
+
+        // 4. Create and replace with <img>
+        const img = document.createElement('img');
+        img.src = `https://kroki.io/${type}/svg/${base64}`;
+        img.style.maxWidth = "100%";
+        img.className = "kroki-diagram";
+
+        const container = block.parentElement.tagName === 'PRE' ? block.parentElement : block;
+        container.parentNode.replaceChild(img, container);
+      } catch (err) {
+        console.error(`Kroki render error [${type}]:`, err);
+      }
+    }
+  }
+
+  // Ensure execution after page load
+  if (document.readyState === 'complete') {
+    renderKroki();
+  } else {
+    window.addEventListener('load', renderKroki);
+  }
+})();
 </script>
-
 
