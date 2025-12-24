@@ -197,3 +197,71 @@ graph TD
     J --> N[Academic Publishing]
 
 ```
+
+```PlantUML
+@startuml
+skinparam handwritten true
+actor User
+rectangle "Documentation System" {
+    User --> (Create Docs)
+    User --> (Edit Docs)
+    User --> (View Docs)
+    (Create Docs) --> (Store in GitHub)
+    (Edit Docs) --> (Store in GitHub)
+    (View Docs) --> (Render from GitHub)
+    }       
+@enduml
+```
+
+```structurizr
+workspace {
+    model {
+        user = person "User" {
+            description "A user of the documentation system."
+        }
+
+        documentationSystem = softwareSystem "Documentation System" {
+            description "A system for creating, editing, and viewing documentation."
+
+            createDocs = container "Create Docs" {
+                description "Allows users to create new documentation."
+            }
+
+            editDocs = container "Edit Docs" {
+                description "Allows users to edit existing documentation."
+            }
+
+            viewDocs = container "View Docs" {
+                description "Allows users to view documentation."
+            }
+
+            storeInGitHub = container "Store in GitHub" {
+                description "Stores documentation in a GitHub repository."
+            }
+
+            renderFromGitHub = container "Render from GitHub" {
+                description "Renders documentation from the GitHub repository."
+            }
+        }
+
+        user -> createDocs "Creates documentation"
+        user -> editDocs "Edits documentation"
+        user -> viewDocs "Views documentation"
+        createDocs -> storeInGitHub "Stores in"
+        editDocs -> storeInGitHub "Stores in"
+        viewDocs -> renderFromGitHub "Renders from"
+    }
+
+    views {
+        systemContext documentationSystem {
+            include *
+            autolayout lr
+        }
+
+        container documentationSystem {
+            include *
+            autolayout lr
+        }
+    }
+}
+``` 
