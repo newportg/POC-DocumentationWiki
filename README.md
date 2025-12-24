@@ -6,9 +6,6 @@ author: "Gary Newport"
 date: "2025-11-24"
 ---
 
-# POC-DocumentationWiki
-
-
 [__TOC__]
 
 
@@ -198,7 +195,7 @@ graph TD
 
 ```
 
-```PlantUML
+```plantuml
 @startuml
 skinparam handwritten true
 actor User
