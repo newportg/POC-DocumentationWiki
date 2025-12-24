@@ -30,7 +30,7 @@
       try {
         const dsl = block.textContent.trim();
         const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
-        console.log("Kroki: Type-{type}");
+        console.log("Kroki: Type-${type}");
 
         // 1. Encode text to UTF-8 bytes
         const data = new TextEncoder().encode(dsl);
@@ -40,6 +40,7 @@
         
         // 3. Convert to URL-safe Base64
         const base64 = uint8ArrayToBase64(compressed);
+        console.log("Kroki: Base64-${base64}");
 
         // 4. Create and replace with <img>
         const img = document.createElement('img');
