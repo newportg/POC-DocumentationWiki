@@ -1,8 +1,3 @@
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({startOnLoad:true,theme:'neutral'})
-    await mermaid.run({querySelector:'code.language-mermaid'})   
-</script>
 
 <!-- Load Pako for Zlib compression -->
 <script src="cdn.jsdelivr.net"></script>
@@ -23,11 +18,22 @@
   }
 
   async function renderKroki() {
-    const codeBlocks = document.querySelectorAll('language-structurizr, language-plantuml');
+    const codeBlocks = document.querySelectorAll('code.language-structurizr, code.language-plantuml, code.language-mermaid');
 
     for (const block of codeBlocks) {
       try {
         const dsl = block.textContent.trim();
+        const type = "";
+        if(block.classList.contains('language-structurizr')){
+          type = 'structurizr';
+        } else if(block.classList.contains('language-plantuml')){
+          type = 'plantuml';
+        }
+        } else(block.classList.contains('language-mermaid')){
+          type = 'plmermaidantuml';
+        }
+
+
         const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
 
         // 1. Encode text to UTF-8 bytes
