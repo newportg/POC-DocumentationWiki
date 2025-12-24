@@ -28,13 +28,12 @@
           type = 'structurizr';
         } else if(block.classList.contains('language-plantuml')){
           type = 'plantuml';
-        }
         } else if(block.classList.contains('language-mermaid')){
           type = 'plantuml';
         }
 
 
-        const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
+        //const type = block.classList.contains('language-structurizr') ? 'structurizr' : 'plantuml';
 
         // 1. Encode text to UTF-8 bytes
         const data = new TextEncoder().encode(dsl);
