@@ -158,3 +158,6 @@ GitHub Pages uses Jekyll by default, and its capabilities are dependent on the p
 
 - Mermaid: GitHub added native support for rendering Mermaid diagrams in Markdown files, which works seamlessly on GitHub Pages.
 - PlantUML & Structurizr: GitHub Pages runs in "safe mode", which restricts custom plugins. To use PlantUML or Structurizr with GitHub Pages, you must generate the SVG/PNG image files as part of your CI/CD pipeline (e.g., using GitHub Actions) and commit those images to your repository. You then reference the generated image files in your Markdown using standard image syntax ![Alt text](/path/to/image.svg). You cannot render them live within the Markdown source blocks on the GitHub Pages server itself.
+
+## Demo Rendered Sites
+[GitBook](https://zoomalong.gitbook.io/poc-documentation/)
