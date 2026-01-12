@@ -99,7 +99,7 @@ Here is a breakdown of why these are the top choices and how they meet your need
 - Support for Markdown: Markdown is the native authoring format for all of them.
 - Support for PlantUML, Mermaid, Structurizr: Mermaid is natively supported by GitHub and many of these generators. PlantUML and Structurizr are also widely supported through extensions, plugins, or pre-processing during the build pipeline. 
 
-## Recommended Platforms (Best Fit)
+## Recommended Platforms (Best fit, No particular order)
 
 |Platform| 	Notes|
 |---|---|
@@ -118,6 +118,9 @@ Here is a breakdown of why these are the top choices and how they meet your need
 | Read The Docs | Excellent for hosting documentation, particularly Sphinx projects, but often used for existing projects rather than a standalone platform choice like Docusaurus or MkDocs for greenfield projects. It still fits the requirements as a hosting solution for content from a GitHub repo. |
 
 ## MarkDown Versions
+
+[Markdown Test Sample](Markdown-IT.md)
+
 The best fit version applications use the following versions of Markdown.
 
 - Docusaurus uses MDX by default, which is a superset of GitHub Flavored Markdown (GFM) that allows you to embed JSX (React components) within your Markdown content. It can be configured to use a stricter CommonMark format if needed.
@@ -126,6 +129,41 @@ The best fit version applications use the following versions of Markdown.
 - GitHub Pages uses GitHub Flavored Markdown (GFM) as its default, which is a formal specification based on the CommonMark standard. GFM is a strict superset of CommonMark, adding useful extensions like tables, strikethrough, task lists, and automatic linking of URLs and GitHub-specific references (issues, commits, users). 
 
 In summary, all four options are either based on the highly compatible CommonMark or GFM specifications, ensuring that your documentation is largely portable and readable across different platforms.
+
+### Genealogy of Markdown
+
+```mermaid
+graph TD
+    %% Early Influences
+    A[Plain Text Email / Usenet] --> D
+    B[Setext 1992] --> D
+    C[reStructuredText 2002] --> D
+
+    %% The Progenitor
+    D{Markdown v1.0.1 2004<br/>John Gruber & Aaron Swartz}
+
+    %% Early Branching
+    D --> E[MultiMarkdown 2005]
+    D --> F[PHP Markdown Extra]
+    
+    %% Major Modern Flavors
+    D --> G[GitHub Flavored Markdown GFM]
+    D --> H[Stack Overflow Markdown]
+    
+    %% Standardization Efforts
+    G --> I((CommonMark 2014))
+    H --> I
+    
+    %% Specialized Descendants
+    I --> J[R Markdown / Quarto]
+    I --> K[Obsidian / PKMS Flavors]
+    E --> L[Pandoc's Markdown]
+    
+    %% Modern Integrations
+    K --> M[Mermaid / Diagrams]
+    J --> N[Academic Publishing]
+
+```
 
 ## Diagramming Support
 
@@ -165,40 +203,7 @@ GitHub Pages uses Jekyll by default, and its capabilities are dependent on the p
 * [GitBook](https://zoomalong.gitbook.io/poc-documentation/)
 * [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
 
-## Genealogy of Markdown
 
-```mermaid
-graph TD
-    %% Early Influences
-    A[Plain Text Email / Usenet] --> D
-    B[Setext 1992] --> D
-    C[reStructuredText 2002] --> D
-
-    %% The Progenitor
-    D{Markdown v1.0.1 2004<br/>John Gruber & Aaron Swartz}
-
-    %% Early Branching
-    D --> E[MultiMarkdown 2005]
-    D --> F[PHP Markdown Extra]
-    
-    %% Major Modern Flavors
-    D --> G[GitHub Flavored Markdown GFM]
-    D --> H[Stack Overflow Markdown]
-    
-    %% Standardization Efforts
-    G --> I((CommonMark 2014))
-    H --> I
-    
-    %% Specialized Descendants
-    I --> J[R Markdown / Quarto]
-    I --> K[Obsidian / PKMS Flavors]
-    E --> L[Pandoc's Markdown]
-    
-    %% Modern Integrations
-    K --> M[Mermaid / Diagrams]
-    J --> N[Academic Publishing]
-
-```
 
 ```plantuml
 @startuml
