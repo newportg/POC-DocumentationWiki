@@ -42,7 +42,7 @@ These tools generate a website from plain-text files stored in your GitHub repos
 
 | Tool       | Description |
 |------------|-------------|
-| Github Pages| Jekyll one of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. |
+| Github Pages (This Site)| Jekyll one of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. |
 | MkDocs| A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.|
 | Docusaurus| An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.|
 | [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)| An open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation.|
@@ -106,7 +106,7 @@ Here is a breakdown of why these are the top choices and how they meet your need
 |Docusaurus	|Excellent balance of modern design, ease of use, built-in features (search, versioning), and a React-based structure for customization.|
 |MkDocs	|Simple, fast, and highly effective for technical documentation, using Python. Easy to configure plugins for diagram support.|
 | [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)	|Ideal for technical and scientific documentation, integrating executable code and advanced formatting capabilities.|
-|GitHub Pages	|The underlying hosting platform for the others (often used with Jekyll or MkDocs), offering a seamless, free hosting solution directly from your repo.|
+|GitHub Pages (This Site)	|The underlying hosting platform for the others (often used with Jekyll or MkDocs), offering a seamless, free hosting solution directly from your repo.|
 
 ### Why Other Options Are Less Suitable
 
@@ -128,6 +128,15 @@ The best fit version applications use the following versions of Markdown.
 In summary, all four options are either based on the highly compatible CommonMark or GFM specifications, ensuring that your documentation is largely portable and readable across different platforms.
 
 ## Diagramming Support
+
+| Documentation Tool | Mermaid |Plantuml | Structurizr |
+|--------------------|---------|---------|-------------|
+| Docusaurus        | Yes (native support) | Yes (via plugins) | Yes (via plugins) |
+| MkDocs            | Yes (via plugins)    | Yes (via plugins) | Yes (via plugins) |
+| Quarto            | Yes (native support) | Yes (via plugins) | No (requires pre-generation) |
+| GitHub Pages      | Yes (native support) | No (requires pre-generation) | No (requires pre-generation) |
+
+
 
 Representing PlantUML and Structurizr diagrams in the recommended applications is generally achieved using plugins, extensions, or by generating images as part of your build pipeline. Since these tools use static site generation, the diagrams are typically converted to SVG or PNG images at build time rather than rendered dynamically in the browser.
 
