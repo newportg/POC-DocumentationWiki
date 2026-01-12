@@ -105,7 +105,7 @@ Here is a breakdown of why these are the top choices and how they meet your need
 |---|---|
 |Docusaurus	|Excellent balance of modern design, ease of use, built-in features (search, versioning), and a React-based structure for customization.|
 |MkDocs	|Simple, fast, and highly effective for technical documentation, using Python. Easy to configure plugins for diagram support.|
-|Quarto	|Ideal for technical and scientific documentation, integrating executable code and advanced formatting capabilities.|
+| [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)	|Ideal for technical and scientific documentation, integrating executable code and advanced formatting capabilities.|
 |GitHub Pages	|The underlying hosting platform for the others (often used with Jekyll or MkDocs), offering a seamless, free hosting solution directly from your repo.|
 
 ### Why Other Options Are Less Suitable
@@ -145,12 +145,6 @@ MkDocs has a rich ecosystem of plugins that handle diagram generation effectivel
 - Structurizr: You can use the Structurizr CLI to generate PlantUML files from your DSL, and then use the PlantUML plugin to render those. Alternatively, you can use the mkdocs-kroki-plugin which supports Structurizr DSL directly.
 - Mermaid: The Material for MkDocs theme has first-class support for Mermaid and other diagram libraries via its integration with the Kroki service. 
 
-### Quarto
-Quarto has native support for several diagram formats. 
-
-- PlantUML & Structurizr: Quarto does not have direct, native PlantUML rendering built-in like Mermaid. You would likely rely on pre-generating the image files (using a GitHub Action or local script with the PlantUML JAR/server) and then embedding them as standard Markdown images. Quarto's general flexibility with Pandoc filters might allow for a more integrated approach, but this requires more configuration.
-- Mermaid & Graphviz: Quarto has native, out-of-the-box support for Mermaid and Graphviz diagrams embedded within special executable cells (e.g., ````{mermaid}`). 
-
 ### GitHub Pages
 GitHub Pages uses Jekyll by default, and its capabilities are dependent on the plugins GitHub allows to run in its environment.
 
@@ -160,6 +154,7 @@ GitHub Pages uses Jekyll by default, and its capabilities are dependent on the p
 ## Demo Rendered Sites
 * [GitHub Pages](https://newportg.github.io/POC-DocumentationWiki/README.html)
 * [GitBook](https://zoomalong.gitbook.io/poc-documentation/)
+* [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
 
 ## Genealogy of Markdown
 
