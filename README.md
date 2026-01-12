@@ -9,7 +9,7 @@ date: "2025-11-24"
 [__TOC__]
 
 
-[Markdown Test Sample](Markdown-DocumentationWiki.md)
+[Markdown Test Sample](Markdown-IT.md)
 
 - About to start a project to evaluate the different documentation systems that are available for software architecture. The goal is to find the best fit for our team's needs.
 - Tto alow architects to write their documenation using their own favorite tools. Whether it's markdown, reStructuredText, or even plain text files.
