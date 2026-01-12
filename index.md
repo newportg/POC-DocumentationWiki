@@ -11,65 +11,63 @@ date: "2025-11-24"
 
 [Markdown Test Sample](Markdown-IT.md)
 
+## Goal
 - About to start a project to evaluate the different documentation systems that are available for software architecture. The goal is to find the best fit for our team's needs.
-- Tto alow architects to write their documenation using their own favorite tools. Whether it's markdown, reStructuredText, or even plain text files.
+- To alow architects to write their documenation using their own favorite tools. Whether it's markdown, reStructuredText, or even plain text files.
 - Need to all use the same git storage system to keep everything organized and version controlled.
 - Will need to support different diagramming tools as well. Some architects prefer using PlantUML, mermaid, structurizr, or even visio.
 - Will need to create templates and guidelines to ensure consistency across all documentation.
 - Pricing
 
-- Documentation tools
+The various documentation platforms can be broadly categorized into two main types based on their architecture and workflow:
+- [Static Site Generators (Docs-as-Code)](#static-site-generators-docs-as-code)
+- [Integrated Solutions (SaaS with GitHub Sync)](#integrated-solutions-saas-with-github-sync)
+
+## Documentation tools and platforms to consider:
   - [GitHub Pages](https://docs.github.com/en/pages)
+  - [MkDocs](https://www.mkdocs.org/)
   - Azure Devops Wiki 
   - [Docusaurus](https://docusaurus.io/)
+  - [Quarto](https://quarto.org/)
   - [GitBook](https://www.gitbook.com/)
   - [Document360](https://document360.com/)
   - [Read The Docs](https://about.readthedocs.com/) 
-  - [Quarto](https://quarto.org/)
   - [Confluense](https://www.atlassian.com/software/confluence)
   - [Notion](https://www.notion.com/)
-  - [MkDocs](https://www.mkdocs.org/)
+
+
 
 ## Static Site Generators (Docs-as-Code) 
 These tools generate a website from plain-text files stored in your GitHub repository. The documentation lives alongside your code, and the entire software development workflow (pull requests, versioning, code reviews) is used for the documentation as well. 
 
-- MkDocs: A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.
-- Docusaurus: An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.
-- DocFX: A static site generator for building and publishing API documentation for .NET projects, but can also be used for general Markdown documentation. It's developed by Microsoft and is highly customizable.
-- Jekyll: One of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. 
-
-## Diagramming and Modeling Tools (Diagrams-as-Code)
-Architecture documentation often requires diagrams. These tools allow you to define diagrams using text-based syntax, which can be versioned in Git like the rest of your documentation. 
-
-- PlantUML and Mermaid: These tools render simple text-based descriptions into diagrams (UML, C4 model, flowcharts, etc.). GitHub natively supports rendering Mermaid diagrams inline within Markdown files, which is a significant advantage.
-- Structurizr: This tool is based on the C4 model for visualizing software architecture. It allows you to create diagrams and documentation from a single model using code or a Domain Specific Language (DSL), perfect for technical people who want to manage architecture rigorously in source control.
-- Draw.io (now diagrams.net): While it has a traditional UI editor, it also offers a C4 model plugin and can store diagram definitions in a version-control-friendly format (like XML or text) within your GitHub repo. 
+| Tool       | Description |
+|------------|-------------|
+| Github Pages| Jekyll one of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. |
+| MkDocs| A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.|
+| Docusaurus| An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.|
+| [Quarto](Quarto.md)| An open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation.|
+| DocFX| A static site generator for building and publishing API documentation for .NET projects, but can also be used for general Markdown documentation. It's developed by Microsoft and is highly customizable.|
 
 ## Integrated Solutions (SaaS with GitHub Sync)
 If you prefer a hosted solution with a more traditional editing interface but still want your source content in GitHub, some SaaS products offer synchronization.
 
-- GitBook: A modern platform for creating and managing documentation. It can connect to your GitHub repository and automatically sync content, providing a polished user interface while keeping the source in Git.
-- Notion or Confluence (with integration): While their primary storage isn't Git, they can be integrated or used in conjunction with a docs-as-code approach to serve different audiences, with the source of truth remaining in the GitHub repo. 
+| Tool       | Description |
+|------------|-------------|
+| GitBook | A modern platform for creating and managing documentation. It can connect to your GitHub repository and automatically sync content, providing a polished user interface while keeping the source in Git.|
+| [Document360](Document360.md) | A knowledge base platform that offers GitHub integration for one-way sync of Markdown files from a GitHub repository into Document360. The synced articles are read-only within Document360's editor; any changes must be made in the source GitHub repository and then synced back.|
+| Notion or Confluence (with integration)| While their primary storage isn't Git, they can be integrated or used in conjunction with a docs-as-code approach to serve different audiences, with the source of truth remaining in the GitHub repo. |
 
 The "docs-as-code" approach using a static site generator and plain text files is generally considered best practice for software architecture documentation because it aligns with engineering workflows and facilitates version control and collaboration within the existing toolset. 
 
-## Quarto 
-Quarto is an open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation. 
+## Required Diagramming and Modeling Tools (Diagrams-as-Code)
+Architecture documentation often requires diagrams. These tools allow you to define diagrams using text-based syntax, which can be versioned in Git like the rest of your documentation. 
 
-- GitHub Repo as Storage: Yes, this is Quarto's native approach. Your documentation is authored in plain-text Markdown files (or .qmd files) and stored directly in your GitHub repository alongside your code.
-- Workflow: It fully embraces the "docs-as-code" philosophy. You use your standard development tools (VS Code, RStudio, command line) to edit files and the entire process (pull requests, code review, versioning) is managed via Git and GitHub.
-- Publishing: Quarto can be published to a variety of destinations, including GitHub Pages, using the quarto publish command or automated with GitHub Actions.
-- Best for: Highly technical teams who want documentation to be a seamless part of their existing engineering workflow and codebase, and require a high degree of customisation and the ability to embed code execution results. 
-
-## Document360 
-Document360 is a full-featured, hosted knowledge base platform designed for creating, managing, and publishing both internal and external user documentation. 
-
-- GitHub Repo as Storage: No, not as its primary storage. Document360 stores your content in its own cloud-based database (MongoDB/Azure Blob Storage).
-- Workflow: It provides a user-friendly, web-based editor (which supports Markdown) and a more traditional content management system (CMS) experience with features like versioning, analytics, and a homepage builder.
-- GitHub Integration: It offers an integration with GitHub that allows for a one-way sync of Markdown files from a GitHub repository into Document360. The synced articles are read-only within Document360's editor; any changes must be made in the source GitHub repository and then synced back.
-
-Best for: Teams where technical writers and non-developers are primary content creators, who prefer a polished UI and dedicated documentation features (like analytics, detailed access control, etc.), but still want the content source to originate from a GitHub repo. 
-
+| Tool       | Description |
+|------------|-------------|
+| PlantUML and Mermaid| These tools render simple text-based descriptions into diagrams (UML, C4 model, flowcharts, etc.). GitHub natively supports rendering Mermaid diagrams inline within Markdown files, which is a significant advantage.|
+| Structurizr | This tool is based on the C4 model for visualizing software architecture. It allows you to create diagrams and documentation from a single model using code or a Domain Specific Language (DSL), perfect for technical people who want to manage architecture rigorously in source control.|
+| Draw.io (now diagrams.net)| While it has a traditional UI editor, it also offers a C4 model plugin and can store diagram definitions in a version-control-friendly format (like XML or text) within your GitHub repo. |
+  
 
 Given this list of documentation platforms.
 
