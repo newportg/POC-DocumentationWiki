@@ -112,10 +112,12 @@ Here is a breakdown of why these are the top choices and how they meet your need
 
 ### Why Other Options Are Less Suitable
 
-- Azure DevOps Wiki: Its primary storage is not a GitHub repo (it uses an Azure repo for "code wiki"), and native support for all diagram types (especially PlantUML and Structurizr) is limited without workarounds.
-- Confluence & Notion: These are traditional CMS/wiki platforms where the primary storage is their own database, not your GitHub repo. While integrations exist, they often rely on one-way syncs or embedding, which doesn't fully align with the "GitHub-backed" requirement.
-- Document360 & GitBook: These are SaaS products. GitBook started with open-source roots but now operates as a hosted solution with sync capabilities. Document360 offers a one-way sync from GitHub, but the source of truth within the app is its own database.
-- Read The Docs: Excellent for hosting documentation, particularly Sphinx projects, but often used for existing projects rather than a standalone platform choice like Docusaurus or MkDocs for greenfield projects. It still fits the requirements as a hosting solution for content from a GitHub repo. 
+| Platform| 	Notes|
+|---|---|   
+| Azure DevOps Wiki | Its primary storage is not a GitHub repo (it uses an Azure repo for "code wiki"), and native support for all diagram types (especially PlantUML and Structurizr) is limited without workarounds.|
+| Confluence & Notion | These are traditional CMS/wiki platforms where the primary storage is their own database, not your GitHub repo. While integrations exist, they often rely on one-way syncs or embedding, which doesn't fully align with the "GitHub-backed" requirement.|
+| Document360 & GitBook | These are SaaS products. GitBook started with open-source roots but now operates as a hosted solution with sync capabilities. Document360 offers a one-way sync from GitHub, but the source of truth within the app is its own database.|
+| Read The Docs | Excellent for hosting documentation, particularly Sphinx projects, but often used for existing projects rather than a standalone platform choice like Docusaurus or MkDocs for greenfield projects. It still fits the requirements as a hosting solution for content from a GitHub repo. |
 
 ## MarkDown Versions
 The best fit version applications use the following versions of Markdown.
