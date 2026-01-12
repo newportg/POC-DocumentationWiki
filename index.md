@@ -102,6 +102,7 @@ Here is a breakdown of why these are the top choices and how they meet your need
 - Support for PlantUML, Mermaid, Structurizr: Mermaid is natively supported by GitHub and many of these generators. PlantUML and Structurizr are also widely supported through extensions, plugins, or pre-processing during the build pipeline. 
 
 ## Recommended Platforms (Best Fit)
+
 |Platform| 	Notes|
 |---|---|
 |Docusaurus	|Excellent balance of modern design, ease of use, built-in features (search, versioning), and a React-based structure for customization.|
