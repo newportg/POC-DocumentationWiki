@@ -28,7 +28,7 @@ The various documentation platforms can be broadly categorized into two main typ
   - [MkDocs](https://www.mkdocs.org/)
   - Azure Devops Wiki 
   - [Docusaurus](https://docusaurus.io/)
-  - [Quarto](https://quarto.org/)
+  - [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
   - [GitBook](https://www.gitbook.com/)
   - [Document360](https://document360.com/)
   - [Read The Docs](https://about.readthedocs.com/) 
@@ -45,7 +45,7 @@ These tools generate a website from plain-text files stored in your GitHub repos
 | Github Pages| Jekyll one of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. |
 | MkDocs| A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.|
 | Docusaurus| An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.|
-| [Quarto](Quarto.md)| An open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation.|
+| [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)| An open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation.|
 | DocFX| A static site generator for building and publishing API documentation for .NET projects, but can also be used for general Markdown documentation. It's developed by Microsoft and is highly customizable.|
 
 ## Integrated Solutions (SaaS with GitHub Sync)
@@ -77,7 +77,7 @@ Given this list of documentation platforms.
   - [GitBook](https://www.gitbook.com/)
   - [Document360](https://document360.com/)
   - [Read The Docs](https://about.readthedocs.com/) 
-  - [Quarto](https://quarto.org/)
+  - [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
   - [Confluense](https://www.atlassian.com/software/confluence)
   - [Notion](https://www.notion.com/)
   - [MkDocs](https://www.mkdocs.org/)
