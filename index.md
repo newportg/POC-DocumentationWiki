@@ -218,7 +218,7 @@ rectangle "Documentation System" {
     (View Docs) --> (Render from GitHub)
     }       
 @enduml
-```
+```    
 
 ```structurizr
 workspace {
