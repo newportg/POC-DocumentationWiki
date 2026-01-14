@@ -44,7 +44,7 @@ These tools generate a website from plain-text files stored in your GitHub repos
 |------------|-------------|
 | Github Pages (This Site)| Jekyll one of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. |
 | MkDocs| A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.|
-| Docusaurus| An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.|
+| [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)| An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.|
 | [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)| An open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation.|
 | DocFX| A static site generator for building and publishing API documentation for .NET projects, but can also be used for general Markdown documentation. It's developed by Microsoft and is highly customizable.|
 
@@ -73,7 +73,7 @@ Given this list of documentation platforms.
 
   - [GitHub Pages](https://docs.github.com/en/pages)
   - Azure Devops Wiki 
-  - [Docusaurus](https://docusaurus.io/)
+  - [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)
   - [GitBook](https://www.gitbook.com/)
   - [Document360](https://document360.com/)
   - [Read The Docs](https://about.readthedocs.com/) 
@@ -103,7 +103,7 @@ Here is a breakdown of why these are the top choices and how they meet your need
 
 |Platform| 	Notes|
 |---|---|
-|Docusaurus	|Excellent balance of modern design, ease of use, built-in features (search, versioning), and a React-based structure for customization.|
+| [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)	|Excellent balance of modern design, ease of use, built-in features (search, versioning), and a React-based structure for customization.|
 |MkDocs	|Simple, fast, and highly effective for technical documentation, using Python. Easy to configure plugins for diagram support.|
 | [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)	|Ideal for technical and scientific documentation, integrating executable code and advanced formatting capabilities.|
 |GitHub Pages (This Site)	|The underlying hosting platform for the others (often used with Jekyll or MkDocs), offering a seamless, free hosting solution directly from your repo.|
@@ -202,6 +202,7 @@ GitHub Pages uses Jekyll by default, and its capabilities are dependent on the p
 * [GitHub Pages](https://newportg.github.io/POC-DocumentationWiki/README.html)
 * [GitBook](https://zoomalong.gitbook.io/poc-documentation/)
 * [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
+* [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)
 
 
 
