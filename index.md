@@ -6,11 +6,6 @@ author: "Gary Newport"
 date: "2025-11-24"
 ---
 
-[__TOC__]
-
-
-[Markdown Test Sample](Markdown-IT.md)
-
 ## Goal
 - Evaluate the different documentation systems that are available for software architecture. 
 - Find the best fit, in my opinion, for our team's needs.
