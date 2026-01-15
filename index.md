@@ -12,7 +12,8 @@ date: "2025-11-24"
 [Markdown Test Sample](Markdown-IT.md)
 
 ## Goal
-- About to start a project to evaluate the different documentation systems that are available for software architecture. The goal is to find the best fit for our team's needs.
+- Evaluate the different documentation systems that are available for software architecture. 
+- Find the best fit, in my opinion, for our team's needs.
 - To alow architects to write their documenation using their own favorite tools. Whether it's markdown, reStructuredText, or even plain text files.
 - Need to all use the same git storage system to keep everything organized and version controlled.
 - Will need to support different diagramming tools as well. Some architects prefer using PlantUML, mermaid, structurizr, or even visio.
@@ -23,18 +24,17 @@ The various documentation platforms can be broadly categorized into two main typ
 - [Static Site Generators (Docs-as-Code)](#static-site-generators-docs-as-code)
 - [Integrated Solutions (SaaS with GitHub Sync)](#integrated-solutions-saas-with-github-sync)
 
-## Documentation tools and platforms to consider:
+## Documentation tools and platforms to considered:
   - [GitHub Pages](https://docs.github.com/en/pages)
   - [MkDocs](https://www.mkdocs.org/)
   - Azure Devops Wiki 
   - [Docusaurus](https://docusaurus.io/)
-  - [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
+  - [Quarto](https://quarto.org/)
   - [GitBook](https://www.gitbook.com/)
   - [Document360](https://document360.com/)
   - [Read The Docs](https://about.readthedocs.com/) 
-  - [Confluense](https://www.atlassian.com/software/confluence)
+  - [Confluence](https://www.atlassian.com/software/confluence)
   - [Notion](https://www.notion.com/)
-
 
 
 ## Static Site Generators (Docs-as-Code) 
@@ -64,25 +64,23 @@ Architecture documentation often requires diagrams. These tools allow you to def
 
 | Tool       | Description |
 |------------|-------------|
-| PlantUML and Mermaid| These tools render simple text-based descriptions into diagrams (UML, C4 model, flowcharts, etc.). GitHub natively supports rendering Mermaid diagrams inline within Markdown files, which is a significant advantage.|
+| Mermaid | A JavaScript-based diagramming and charting tool that uses a simple markdown-like syntax to define diagrams. It is widely supported in various documentation platforms, including GitHub, Docusaurus, and MkDocs.|
+| PlantUML | These tools render simple text-based descriptions into diagrams (UML, C4 model, flowcharts, etc.). GitHub natively supports rendering Mermaid diagrams inline within Markdown files, which is a significant advantage.|
 | Structurizr | This tool is based on the C4 model for visualizing software architecture. It allows you to create diagrams and documentation from a single model using code or a Domain Specific Language (DSL), perfect for technical people who want to manage architecture rigorously in source control.|
 | Draw.io (now diagrams.net)| While it has a traditional UI editor, it also offers a C4 model plugin and can store diagram definitions in a version-control-friendly format (like XML or text) within your GitHub repo. |
   
+### Diagramming Support
 
-Given this list of documentation platforms.
+| Documentation Tool | Mermaid |Plantuml | Structurizr |
+|--------------------|---------|---------|-------------|
+| Docusaurus        | Yes (via plugins)    | Yes (via plugins) | Yes (via plugins) |
+| MkDocs            | Yes (via plugins)    | Yes (via plugins) | Yes (via plugins) |
+| Quarto            | Yes (native support) | Yes (via plugins) | No (requires pre-generation) |
+| GitHub Pages      | Yes (native support) | No (requires pre-generation) | No (requires pre-generation) |
 
-  - [GitHub Pages](https://docs.github.com/en/pages)
-  - Azure Devops Wiki 
-  - [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)
-  - [GitBook](https://www.gitbook.com/)
-  - [Document360](https://document360.com/)
-  - [Read The Docs](https://about.readthedocs.com/) 
-  - [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
-  - [Confluense](https://www.atlassian.com/software/confluence)
-  - [Notion](https://www.notion.com/)
-  - [MkDocs](https://www.mkdocs.org/)
+Representing PlantUML and Structurizr diagrams in the recommended applications is generally achieved using plugins, extensions, or by generating images as part of your build pipeline. Since these tools use static site generation, the diagrams are typically converted to SVG or PNG images at build time rather than rendered dynamically in the browser.
 
-which best meet our requirements of:
+# Which best meet our requirements of:
 
 - 20 active contributing users
 - 1000+ readonly users
@@ -93,11 +91,13 @@ which best meet our requirements of:
 The best options that meet all requirements, especially the GitHub-backed document repository, are the open-source static site generators such as Docusaurus, MkDocs, Quarto, and GitHub Pages. These platforms fully support the "docs-as-code" workflow required by a GitHub-backed repository.
 Here is a breakdown of why these are the top choices and how they meet your needs:
 
-- GitHub-backed document repository: All these tools use plain Markdown files stored in your GitHub repo as the source of truth.
-- 20 active contributing users: The contribution model leverages standard Git workflows (pull requests, branching, code reviews), which scales well for active engineering teams.
-- 1000+ readonly users: Static site generators produce highly performant, scalable websites that can handle thousands of concurrent read-only users without performance issues.
-- Support for Markdown: Markdown is the native authoring format for all of them.
-- Support for PlantUML, Mermaid, Structurizr: Mermaid is natively supported by GitHub and many of these generators. PlantUML and Structurizr are also widely supported through extensions, plugins, or pre-processing during the build pipeline. 
+| Requirement | Explanation |
+|-------------|-------------|
+| GitHub-backed document repository | All these tools use plain Markdown files stored in your GitHub repo as the source of truth.|
+| 20 active contributing users | The contribution model leverages standard Git workflows (pull requests, branching, code reviews), which scales well for active engineering teams.|
+| 1000+ readonly users | Static site generators produce highly performant, scalable websites that can handle thousands of concurrent read-only users without performance issues.|
+| Support for Markdown | Markdown is the native authoring format for all of them. |
+| Support for PlantUML, Mermaid, Structurizr | Mermaid is natively supported by GitHub and many of these generators. PlantUML and Structurizr are also widely supported through extensions, plugins, or pre-processing during the build pipeline. |
 
 ## Recommended Platforms (Best fit, No particular order)
 
@@ -165,18 +165,9 @@ graph TD
 
 ```
 
-## Diagramming Support
-
-| Documentation Tool | Mermaid |Plantuml | Structurizr |
-|--------------------|---------|---------|-------------|
-| Docusaurus        | Yes (native support) | Yes (via plugins) | Yes (via plugins) |
-| MkDocs            | Yes (via plugins)    | Yes (via plugins) | Yes (via plugins) |
-| Quarto            | Yes (native support) | Yes (via plugins) | No (requires pre-generation) |
-| GitHub Pages      | Yes (native support) | No (requires pre-generation) | No (requires pre-generation) |
+---------------------------------------------------
 
 
-
-Representing PlantUML and Structurizr diagrams in the recommended applications is generally achieved using plugins, extensions, or by generating images as part of your build pipeline. Since these tools use static site generation, the diagrams are typically converted to SVG or PNG images at build time rather than rendered dynamically in the browser.
 
 ### Docusaurus
 Docusaurus natively supports Mermaid, but PlantUML and Structurizr require community plugins or build-time generation. 
