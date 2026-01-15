@@ -22,7 +22,7 @@ The various documentation platforms can be broadly categorized into two main typ
 ## Documentation tools and platforms to considered:
   - [GitHub Pages](https://docs.github.com/en/pages)
   - [MkDocs](https://www.mkdocs.org/)
-  - Azure Devops Wiki 
+  - Azure Devops Wiki (Not considered, we have enough lived expierence to know its limitations)
   - [Docusaurus](https://docusaurus.io/)
   - [Quarto](https://quarto.org/)
   - [GitBook](https://www.gitbook.com/)
