@@ -30,7 +30,8 @@ The various documentation platforms can be broadly categorized into two main typ
   - [Read The Docs](https://about.readthedocs.com/) 
   - [Confluence](https://www.atlassian.com/software/confluence)
   - [Notion](https://www.notion.com/)
-
+  - [DocFX](https://dotnet.github.io/docfx/)
+  
 
 ## Static Site Generators (Docs-as-Code) 
 These tools generate a website from plain-text files stored in your GitHub repository. The documentation lives alongside your code, and the entire software development workflow (pull requests, versioning, code reviews) is used for the documentation as well. 
@@ -38,10 +39,12 @@ These tools generate a website from plain-text files stored in your GitHub repos
 | Tool       | Description |
 |------------|-------------|
 | Github Pages (This Site)| Jekyll one of the original static site generators, powered by Ruby. It is the engine behind GitHub Pages, making it a seamless option for hosting your documentation directly from your GitHub repo for free. |
-| MkDocs| A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.|
+| MkDocs | A fast and simple static site generator written in Python, geared towards technical documentation. It uses Markdown source files and has a variety of themes and plugins available.|
 | [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)| An open-source static site generator built on React that is popular for documentation sites. It is easy to use and provides a modern look and feel with built-in search and versioning features.|
 | [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)| An open-source scientific and technical publishing system that allows you to create dynamic content using Markdown and integrate executable code (Python, R, Julia, etc.) into your documentation.|
 | DocFX| A static site generator for building and publishing API documentation for .NET projects, but can also be used for general Markdown documentation. It's developed by Microsoft and is highly customizable.|
+
+**N.B.** Unable to generate working examples for MkDocs due to installation restrictions.
 
 ## Integrated Solutions (SaaS with GitHub Sync)
 If you prefer a hosted solution with a more traditional editing interface but still want your source content in GitHub, some SaaS products offer synchronization.
@@ -51,6 +54,8 @@ If you prefer a hosted solution with a more traditional editing interface but st
 | GitBook | A modern platform for creating and managing documentation. It can connect to your GitHub repository and automatically sync content, providing a polished user interface while keeping the source in Git.|
 | [Document360](Document360.md) | A knowledge base platform that offers GitHub integration for one-way sync of Markdown files from a GitHub repository into Document360. The synced articles are read-only within Document360's editor; any changes must be made in the source GitHub repository and then synced back.|
 | Notion or Confluence (with integration)| While their primary storage isn't Git, they can be integrated or used in conjunction with a docs-as-code approach to serve different audiences, with the source of truth remaining in the GitHub repo. |
+
+**N.B.** Unable to view complted GitBook as Gitbook.io is restricred by ISO, due to phising issues.
 
 The "docs-as-code" approach using a static site generator and plain text files is generally considered best practice for software architecture documentation because it aligns with engineering workflows and facilitates version control and collaboration within the existing toolset. 
 
@@ -71,6 +76,7 @@ Architecture documentation often requires diagrams. These tools allow you to def
 | Docusaurus        | Yes (via plugins)    | Yes (via plugins) | Yes (via plugins) |
 | MkDocs            | Yes (via plugins)    | Yes (via plugins) | Yes (via plugins) |
 | Quarto            | Yes (native support) | Yes (via plugins) | No (requires pre-generation) |
+| DocFx             | Yes (native support) | Yes (via plugins) | No (requires pre-generation) |
 | GitHub Pages      | Yes (native support) | No (requires pre-generation) | No (requires pre-generation) |
 
 Representing PlantUML and Structurizr diagrams in the recommended applications is generally achieved using plugins, extensions, or by generating images as part of your build pipeline. Since these tools use static site generation, the diagrams are typically converted to SVG or PNG images at build time rather than rendered dynamically in the browser.
