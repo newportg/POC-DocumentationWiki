@@ -164,33 +164,6 @@ graph TD
 
 
 
-### Docusaurus
-Docusaurus natively supports Mermaid, but PlantUML and Structurizr require community plugins or build-time generation. 
-
-- PlantUML: Use a plugin like remark-kroki or similar Docusaurus PlantUML plugins that convert plantuml code blocks to images during the build process, often using a public or private PlantUML server.
-- Structurizr: A dedicated docusaurus-plugin-structurizr exists to generate diagrams from Structurizr DSL files (.dsl) and embed them into your markdown pages.
-- Mermaid: Docusaurus has native support for Mermaid via a simple configuration in docusaurus.config.js, making it a very seamless option. 
-
-### MkDocs
-MkDocs has a rich ecosystem of plugins that handle diagram generation effectively.
-
-- PlantUML: The mkdocs-plantuml-plugin is widely used. It requires a PlantUML server (which you can run locally via Docker) to render diagrams from puml code blocks in your markdown files during the build phase.
-- Structurizr: You can use the Structurizr CLI to generate PlantUML files from your DSL, and then use the PlantUML plugin to render those. Alternatively, you can use the mkdocs-kroki-plugin which supports Structurizr DSL directly.
-- Mermaid: The Material for MkDocs theme has first-class support for Mermaid and other diagram libraries via its integration with the Kroki service. 
-
-### GitHub Pages
-GitHub Pages uses Jekyll by default, and its capabilities are dependent on the plugins GitHub allows to run in its environment.
-
-- Mermaid: GitHub added native support for rendering Mermaid diagrams in Markdown files, which works seamlessly on GitHub Pages.
-- PlantUML & Structurizr: GitHub Pages runs in "safe mode", which restricts custom plugins. To use PlantUML or Structurizr with GitHub Pages, you must generate the SVG/PNG image files as part of your CI/CD pipeline (e.g., using GitHub Actions) and commit those images to your repository. You then reference the generated image files in your Markdown using standard image syntax ![Alt text](/path/to/image.svg). You cannot render them live within the Markdown source blocks on the GitHub Pages server itself.
-
-## Demo Rendered Sites
-* [GitHub Pages](https://newportg.github.io/POC-DocumentationWiki/README.html)
-* [GitBook](https://zoomalong.gitbook.io/poc-documentation/)
-* [Quarto](https://newportg.github.io/POC-DocumentationWiki-Quarto/)
-* [Docusaurus](https://newportg.github.io/POC-DocumentationWiki-Docusaurus/)
-
-
 
 ```plantuml
 @startuml
